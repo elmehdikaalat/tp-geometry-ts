@@ -29,5 +29,9 @@ export default class LineString implements Geometry {
         p.translate(dx, dy);
     }
   }
+  clone(): LineString {
+    const clonedPoints = this.points.map(p => p.clone());
+    return new LineString(clonedPoints);
+  }
 
 }

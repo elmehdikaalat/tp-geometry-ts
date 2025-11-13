@@ -40,9 +40,28 @@ describe("test Point", () => {
     it("test translate on empty point", () => {
         const p = new Point(); 
         p.translate(10, 10);
-
         expect(p.getCoordinate()).to.deep.equal([]);
         expect(p.isEmpty()).to.equal(true);
+    });
+
+
+    it("clone of empty point", () => {
+        const p = new Point();
+        const c = p.clone();
+
+        expect(c.getCoordinate()).to.deep.equal([]);
+        expect(c).to.not.equal(p);
+    });
+
+    it("clone of non empty point", () => {
+        const p = new Point([1,2]);
+        const c = p.clone();
+
+        expect(c.getCoordinate()).to.deep.equal([1,2]);
+        expect(c).to.not.equal(p);
+
+        c.translate(10,10);
+        expect(p.getCoordinate()).to.deep.equal([1,2]);
     });
 
 });

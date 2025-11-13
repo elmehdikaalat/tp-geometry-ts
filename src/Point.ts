@@ -35,4 +35,8 @@ export default class Point implements Geometry {
     this.coordinate[0] += dx;
     this.coordinate[1] += dy;
   }
+  clone(): Point {
+    const newCoord = this.coordinate.slice();  
+    return new Point(newCoord);
+}
 }
