@@ -64,4 +64,22 @@ describe("test Point", () => {
         expect(p.getCoordinate()).to.deep.equal([1,2]);
     });
 
+    it("test getEnvelope on empty point", () => {
+        const p = new Point();
+        const env = p.getEnvelope();
+
+        expect(env.isEmpty()).to.equal(true);
+    });
+
+    it("test getEnvelope on non-empty point", () => {
+        const p = new Point([3, 4]);
+        const env = p.getEnvelope();
+
+        expect(env.isEmpty()).to.equal(false);
+        expect(env.getXmin()).to.equal(3);
+        expect(env.getYmin()).to.equal(4);
+        expect(env.getXmax()).to.equal(3);
+        expect(env.getYmax()).to.equal(4);
+    });
+
 });
