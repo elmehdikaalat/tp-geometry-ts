@@ -11,6 +11,10 @@ export default class Point {
     return this.coordinate;
   }
 
+  getType(): string {
+    return this.constructor.name;
+  }
+
   x(): number {
     return this.coordinate ? this.coordinate[0] : Number.NaN ;
   }
