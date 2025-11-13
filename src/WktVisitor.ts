@@ -18,16 +18,12 @@ export default class WktVisitor implements GeometryVisitor {
       this.buffer = `POINT(${x} ${y})`;
     }
   }
-  
+
   visitLineString(line: LineString): void {
     if (line.isEmpty()) {
       this.buffer = "LINESTRING EMPTY";
     } else {
-      const coords = line.getNumPoints()
-                        ? line.getNumPoints()
-                        : 0;
-
-      const parts = [];
+      const parts: string[] = [];
 
       for (let i = 0; i < line.getNumPoints(); i++) {
         const [x, y] = line.getPointN(i).getCoordinate();
