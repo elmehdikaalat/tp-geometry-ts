@@ -38,7 +38,7 @@ export default class GeometryCollection extends AbstractGeometry {
     return new GeometryCollection(this.geometries.map(g => g.clone()));
   }
 
-  accept(visitor: GeometryVisitor): void {
-    visitor.visitGeometryCollection(this);
+  accept<T>(visitor: GeometryVisitor<T>): T {
+    return visitor.visitGeometryCollection(this);
   }
 }

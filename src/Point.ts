@@ -40,11 +40,13 @@ export default class Point extends AbstractGeometry {
     this.coordinate[0] += dx;
     this.coordinate[1] += dy;
   }
+  
   clone(): Point {
     const newCoord = this.coordinate.slice();  
     return new Point(newCoord);
   }
-  accept(visitor: GeometryVisitor): void {
-    visitor.visitPoint(this);
+  
+  accept<T>(visitor: GeometryVisitor<T>): T {
+    return visitor.visitPoint(this);
   }
 }

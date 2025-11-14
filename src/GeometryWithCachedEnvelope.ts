@@ -30,8 +30,8 @@ export default class GeometryWithCachedEnvelope implements Geometry {
         }
         return this.cachedEnvelope;
     }
-    accept(visitor: GeometryVisitor): void {
-        this.original.accept(visitor);
+    accept<T>(visitor: GeometryVisitor<T>): T {
+        return this.original.accept(visitor);
     }
     asText(): string {
         return this.original.asText();
