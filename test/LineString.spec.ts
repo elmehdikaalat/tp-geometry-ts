@@ -94,7 +94,7 @@ describe("test LineString", () => {
     const p2 = new Point([1, 1]);
     const line = new LineString([p1, p2]);
 
-    expect(line.asText()).to.equal("LINESTRING(0 0, 1 1)");
+    expect(line.asText()).to.equal("LINESTRING(0 0,1 1)");
   });
 
 });

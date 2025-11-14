@@ -3,6 +3,7 @@ import { expect } from "chai";
 import LogGeometryVisitor from "../src/LogGeometryVisitor";
 import Point from "../src/Point";
 import LineString from "../src/LineString";
+import GeometryCollection from "../src/GeometryCollection";
 
 describe("test LogGeometryVisitor", () => {
 
@@ -63,6 +64,30 @@ describe("test LogGeometryVisitor", () => {
   console.log = old;
 
   expect(msg).to.equal("Je suis un point vide.");
+});
+
+it("geometry collection vide", () => {
+  let message = "";
+  const visitor = new LogGeometryVisitor((msg) => message = msg);
+
+  const gc = new GeometryCollection();
+  gc.accept(visitor);
+
+  expect(message).to.equal("Je suis une collection vide.");
+});
+
+it("geometry collection non vide", () => {
+  let message = "";
+  const visitor = new LogGeometryVisitor((msg) => message = msg);
+
+  const gc = new GeometryCollection([
+    new Point([1, 2]),
+    new LineString([new Point([0, 0])])
+  ]);
+
+  gc.accept(visitor);
+
+  expect(message).to.equal("Je suis une collection contenant 2 géométrie(s).");
 });
 
 

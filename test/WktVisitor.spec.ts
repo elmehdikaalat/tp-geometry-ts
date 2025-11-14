@@ -36,7 +36,7 @@ describe("test WktVisitor", () => {
     ls.accept(visitor);
 
     expect(visitor.getResult()).to.equal(
-      "LINESTRING(0 0, 1 1.5, 5 5)"
+      "LINESTRING(0 0,1 1.5,5 5)"
     );
   });
 

@@ -76,15 +76,17 @@ describe("test GeometryWithCachedEnvelope", () => {
         const g = new GeometryWithCachedEnvelope(p);
 
         let visited = false;
+
         const fakeVisitor = {
             visitPoint() { visited = true; },
-            visitLineString() {}
+            visitLineString() {},
+            visitGeometryCollection() {}
         };
 
         g.accept(fakeVisitor);
 
         expect(visited).to.equal(true);
-    });
+    })
 
     it("asText() délègue correctement", () => {
         const p = new Point([3,4]);
