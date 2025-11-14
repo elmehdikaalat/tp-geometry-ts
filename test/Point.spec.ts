@@ -82,4 +82,14 @@ describe("test Point", () => {
         expect(env.getYmax()).to.equal(4);
     });
 
+    it("test asText() on empty point", () => {
+        const p = new Point();
+        expect(p.asText()).to.equal("POINT EMPTY");
+    });
+
+    it("test asText() on non-empty point", () => {
+        const p = new Point([3.0, 4.0]);
+        expect(p.asText()).to.equal("POINT(3 4)");
+    });
+
 });

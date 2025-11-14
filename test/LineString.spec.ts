@@ -84,4 +84,17 @@ describe("test LineString", () => {
       expect(env.getYmax()).to.equal(10);
   });
 
+  it("test asText() on empty LineString", () => {
+    const line = new LineString();
+    expect(line.asText()).to.equal("LINESTRING EMPTY");
+  });
+
+  it("test asText() on non-empty LineString", () => {
+    const p1 = new Point([0, 0]);
+    const p2 = new Point([1, 1]);
+    const line = new LineString([p1, p2]);
+
+    expect(line.asText()).to.equal("LINESTRING(0 0, 1 1)");
+  });
+
 });
